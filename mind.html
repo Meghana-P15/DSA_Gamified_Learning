@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mind Game</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      text-align: center;
+      color: white;
+    }
+
+    .box {
+      background: white;
+      color: black;
+      width: 350px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 6px;
+      margin: 5px;
+      background: #ff758c;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🧠 Mind Game</h2>
+
+<input id="start" placeholder="Start"><br>
+<input id="stop" placeholder="Stop"><br>
+
+<button onclick="startGame()">Start</button>
+
+<p id="msg"></p>
+
+<button onclick="higher()">Higher</button>
+<button onclick="lower()">Lower</button>
+<button onclick="correct()">Correct</button>
+
+<p id="attempts"></p>
+
+<br>
+<a href="/">
+  <button>⬅ Back</button>
+</a>
+
+</div>
+
+<script>
+
+let start, stop, mid, attempts;
+
+function startGame(){
+  start = Number(document.getElementById("start").value);
+  stop = Number(document.getElementById("stop").value);
+
+  if(start >= stop){
+    document.getElementById("msg").innerText = "Start must be less than stop";
+    return;
+  }
+
+  attempts = 0;
+  nextGuess();
+}
+
+function nextGuess(){
+  mid = Math.floor((start + stop)/2);
+  attempts++;
+
+  document.getElementById("msg").innerText =
+    "My guess: " + mid;
+}
+
+function higher(){
+  start = mid + 1;
+  nextGuess();
+}
+
+function lower(){
+  stop = mid - 1;
+  nextGuess();
+}
+
+function correct(){
+  document.getElementById("msg").innerText = "🎉 Got it!";
+  document.getElementById("attempts").innerText =
+    "Attempts: " + attempts;
+}
+
+</script>
+
+</body>
+</html>

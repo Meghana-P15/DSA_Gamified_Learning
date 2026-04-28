@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess Game</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      text-align: center;
+      color: white;
+    }
+
+    .box {
+      background: white;
+      color: black;
+      width: 350px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 6px;
+      margin: 5px;
+      background: #667eea;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🎯 Guess Game</h2>
+
+<input id="name" placeholder="Enter name"><br>
+
+<select id="level">
+  <option value="easy">Easy</option>
+  <option value="medium">Medium</option>
+  <option value="hard">Hard</option>
+</select><br>
+
+<p id="range"></p>
+
+<button onclick="startGame()">Start</button>
+
+<p id="msg"></p>
+
+<input id="guess" type="number" placeholder="Enter guess"><br>
+<button onclick="sendGuess()">Guess</button>
+
+<p id="attempts"></p>
+
+<br>
+<a href="/mind">
+  <button>🧠 Mind Game</button>
+</a>
+
+</div>
+
+<!-- IMPORTANT -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
