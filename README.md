@@ -42,7 +42,7 @@ The project was initially developed as a command-line application and later enha
 <h2>How to run the program </h2>
 
 1. Make sure Python is installed
-
+<pre>
 2. Run the files:
 project-folder/
 │
@@ -53,6 +53,7 @@ project-folder/
 │
 ├── static/
 │   └── script.js
+</pre>
 
 <hr> <h2>How to run the program </h2>
 Make sure Python is installed
