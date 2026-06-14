@@ -1,70 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Guess Game</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      text-align: center;
-      color: white;
-    }
-
-    .box {
-      background: white;
-      color: black;
-      width: 350px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    button {
-      padding: 6px;
-      margin: 5px;
-      background: #667eea;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="guess-page">
 
-<div class="box">
+  <div class="main-container">
 
-<h2>🎯 Guess Game</h2>
+    <div class="game-card">
+      <div class="icon-circle">🎯</div>
 
-<input id="name" placeholder="Enter name"><br>
+      <h1>Number Guessing Game</h1>
+      <p class="subtitle">
+        Choose a difficulty level and guess the hidden number before your attempts run out.
+      </p>
 
-<select id="level">
-  <option value="easy">Easy</option>
-  <option value="medium">Medium</option>
-  <option value="hard">Hard</option>
-</select><br>
+      <div class="input-group">
+        <label for="name">Player Name</label>
+        <input id="name" type="text" placeholder="Enter your name">
+      </div>
 
-<p id="range"></p>
+      <div class="input-group">
+        <label for="level">Difficulty Level</label>
+        <select id="level">
+          <option value="easy">Easy - 1 to 50</option>
+          <option value="medium">Medium - 1 to 100</option>
+          <option value="hard">Hard - 1 to 100</option>
+        </select>
+      </div>
 
-<button onclick="startGame()">Start</button>
+      <button class="primary-btn" onclick="startGame()">Start Game</button>
 
-<p id="msg"></p>
+      <div class="status-box">
+        <p id="range">Range: -</p>
+        <p id="msg">Click Start Game to begin</p>
+        <p id="attempts">Attempts left: -</p>
+      </div>
 
-<input id="guess" type="number" placeholder="Enter guess"><br>
-<button onclick="sendGuess()">Guess</button>
+      <div class="input-group">
+        <label for="guess">Your Guess</label>
+        <input id="guess" type="number" placeholder="Enter your guess">
+      </div>
 
-<p id="attempts"></p>
+      <button class="secondary-btn" onclick="sendGuess()">Submit Guess</button>
 
-<br>
-<a href="/mind">
-  <button>🧠 Mind Game</button>
-</a>
+      <a href="/mind" class="link-btn">Try Mind Reading Game 🧠</a>
+    </div>
 
-</div>
+  </div>
 
-<!-- IMPORTANT -->
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
