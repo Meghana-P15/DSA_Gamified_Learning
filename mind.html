@@ -1,104 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mind Game</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      text-align: center;
-      color: white;
-    }
-
-    .box {
-      background: white;
-      color: black;
-      width: 350px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    button {
-      padding: 6px;
-      margin: 5px;
-      background: #ff758c;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Reading Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="mind-page">
 
-<div class="box">
+  <div class="main-container">
 
-<h2>🧠 Mind Game</h2>
+    <div class="game-card">
+      <div class="icon-circle">🧠</div>
 
-<input id="start" placeholder="Start"><br>
-<input id="stop" placeholder="Stop"><br>
+      <h1>Mind Reading Game</h1>
+      <p class="subtitle">
+        Think of a number between 1 and 100. The computer will try to read your mind and guess it!
+      </p>
 
-<button onclick="startGame()">Start</button>
+      <button class="primary-btn" onclick="startMindGame()">Start Mind Reading</button>
 
-<p id="msg"></p>
+      <div class="status-box mind-status">
+        <p id="msg">Think of a number and click start</p>
+      </div>
 
-<button onclick="higher()">Higher</button>
-<button onclick="lower()">Lower</button>
-<button onclick="correct()">Correct</button>
+      <div class="button-row">
+        <button class="choice-btn" onclick="mindFeedback('high')">Too High</button>
+        <button class="correct-btn" onclick="mindFeedback('correct')">Correct!</button>
+        <button class="choice-btn" onclick="mindFeedback('low')">Too Low</button>
+      </div>
 
-<p id="attempts"></p>
+      <a href="/" class="link-btn">Back to Number Guessing 🎯</a>
+    </div>
 
-<br>
-<a href="/">
-  <button>⬅ Back</button>
-</a>
+  </div>
 
-</div>
-
-<script>
-
-let start, stop, mid, attempts;
-
-function startGame(){
-  start = Number(document.getElementById("start").value);
-  stop = Number(document.getElementById("stop").value);
-
-  if(start >= stop){
-    document.getElementById("msg").innerText = "Start must be less than stop";
-    return;
-  }
-
-  attempts = 0;
-  nextGuess();
-}
-
-function nextGuess(){
-  mid = Math.floor((start + stop)/2);
-  attempts++;
-
-  document.getElementById("msg").innerText =
-    "My guess: " + mid;
-}
-
-function higher(){
-  start = mid + 1;
-  nextGuess();
-}
-
-function lower(){
-  stop = mid - 1;
-  nextGuess();
-}
-
-function correct(){
-  document.getElementById("msg").innerText = "🎉 Got it!";
-  document.getElementById("attempts").innerText =
-    "Attempts: " + attempts;
-}
-
-</script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
